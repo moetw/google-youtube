@@ -37,8 +37,11 @@ Custom property | Description | Default
   from HTML and may be out of place here. Review them and
   then delete this comment!
 */
+
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+
 Polymer({
-  _template: Polymer.html`
+  _template: html`
     <style>
       :host {
         display: block;
