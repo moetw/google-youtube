@@ -41,6 +41,7 @@ Custom property | Description | Default
 import '@polymer/polymer/polymer-legacy.js';
 import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import '@polymer/google-apis/google-youtube-api.js';
 
 Polymer({
   _template: html`
