@@ -9,7 +9,7 @@
 
     <link rel="import" href="../../polymer/polymer.html">
     <link rel="import" href="../../test-fixture/test-fixture.html">
-    <link rel="import" href="../google-youtube.html">
+    <script type="module" src="../google-youtube.js"></script>
   </head>
   <body>
     <test-fixture id="GoogleYoutube">
@@ -20,52 +20,52 @@
       </template>
     </test-fixture>
 
-    <script>
-      'use strict'
+    <script type="module">
+import '../google-youtube.js';
 
-      // uses the correct dom flush based on version of Polymer
-      var flushDom = function() {
-        if (Polymer.Templatizer.flush) {
-          Polymer.Templatizer.flush();
-        } else {
-          Polymer.dom.flush();
-        }
-      };
+// uses the correct dom flush based on version of Polymer
+var flushDom = function() {
+  if (Polymer.Templatizer.flush) {
+    Polymer.Templatizer.flush();
+  } else {
+    Polymer.dom.flush();
+  }
+};
 
-      suite('thumbnail tests', function() {
-        var googleYouTube;
-        setup(function() {
-          googleYouTube = fixture('GoogleYoutube');
-        });
+suite('thumbnail tests', function() {
+  var googleYouTube;
+  setup(function() {
+    googleYouTube = fixture('GoogleYoutube');
+  });
 
-        test('Thumbnail image present', function() {
-          flushDom();
-          assert.ok(googleYouTube.$$('img'), 'thumbnail <img> is present.');
-        });
+  test('Thumbnail image present', function() {
+    flushDom();
+    assert.ok(googleYouTube.$$('img'), 'thumbnail <img> is present.');
+  });
 
-        test('Tap handler loads embed', function(done) {
-          var thumbnail;
+  test('Tap handler loads embed', function(done) {
+    var thumbnail;
 
-          googleYouTube.addEventListener('google-youtube-state-change', function(e) {
-            if (!googleYouTube.state || googleYouTube.state === -1) {
-              return;
-            }
+    googleYouTube.addEventListener('google-youtube-state-change', function(e) {
+      if (!googleYouTube.state || googleYouTube.state === -1) {
+        return;
+      }
 
-            expect(getComputedStyle(thumbnail).display).to.be.eql('none');
+      expect(getComputedStyle(thumbnail).display).to.be.eql('none');
 
-            assert.ok(googleYouTube.$$('iframe'), 'YouTube embed <iframe> is present.');
+      assert.ok(googleYouTube.$$('iframe'), 'YouTube embed <iframe> is present.');
 
-            done();
-          });
+      done();
+    });
 
-          googleYouTube.videoId = 'eORqFaf_QzM';
+    googleYouTube.videoId = 'eORqFaf_QzM';
 
-          flushDom();
+    flushDom();
 
-          thumbnail = googleYouTube.$$('#thumbnail');
-          googleYouTube._handleThumbnailTap();
-        });
-      });
-    </script>
+    thumbnail = googleYouTube.$$('#thumbnail');
+    googleYouTube._handleThumbnailTap();
+  });
+});
+</script>
   </body>
 </html>
