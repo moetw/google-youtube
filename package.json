@@ -23,7 +23,7 @@
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@polymer/iron-localstorage": "^3.0.0-pre.18",
-    "google-apis": "git://github.com/GoogleWebComponents/google-apis.git#3.x"
+    "@polymer/google-apis": "git://github.com/GoogleWebComponents/google-apis.git#3.x"
   },
   "devDependencies": {
     "wct-browser-legacy": "^0.0.1-pre.11",
