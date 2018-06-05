@@ -38,7 +38,7 @@ Custom property | Description | Default
   then delete this comment!
 */
 
-import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import '@polymer/polymer/polymer-legacy.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 
 Polymer({
